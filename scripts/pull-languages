@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+cd "$(dirname "$0")/.."
+
+(
+  echo "# Auto-generated using the script \"$(basename "$0")\", please do not edit!"
+  echo "# License: MIT (Copyright (c) 2017 GitHub, Inc.)"
+  echo "# https://github.com/github-linguist/linguist/blob/main/LICENSE"
+  echo ""
+  curl https://raw.githubusercontent.com/github-linguist/linguist/refs/heads/main/lib/linguist/languages.yml
+) > resources/languages.yml
