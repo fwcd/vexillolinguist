@@ -1,12 +1,12 @@
 from pathlib import Path
 from send2trash import send2trash
+
 from vexillolinguist.color import parse_color
+from vexillolinguist.utils import closest_matches, filter_unambiguous
 
 import argparse
 import subprocess
 import yaml
-
-from vexillolinguist.utils import closest_matches, filter_unambiguous
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 LANGUAGES_PATH = ROOT_DIR / 'resources' / 'languages.yml'
