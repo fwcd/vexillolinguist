@@ -52,6 +52,7 @@ COLORS = {
     'yellow': Color(1, 1, 0),
     'orange': Color(1, 0.5, 0),
     'magenta': Color(1, 0, 1),
+    'violet': Color(0.5, 0, 1),
     'cyan': Color(0, 1, 1),
     'black': Color(0, 0, 0),
     'gray': Color(0.5, 0.5, 0.5),
