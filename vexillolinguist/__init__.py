@@ -6,6 +6,8 @@ import argparse
 import subprocess
 import yaml
 
+from vexillolinguist.utils import closest_matches
+
 ROOT_DIR = Path(__file__).resolve().parent.parent
 LANGUAGES_PATH = ROOT_DIR / 'resources' / 'languages.yml'
 
@@ -29,8 +31,8 @@ def main():
     flag_colors = [parse_color(c) for c in flag_raw_colors]
 
     print('==> Matching colors...')
-    flag_lang_names = [min(lang_colors.items(), key=lambda entry: c.distance_to(entry[1]))[0] for c in flag_colors]
-    flag_lang_exts = [langs[lang]['extensions'][0] for lang in flag_lang_names]
+    flag_lang_names, _ = zip(*closest_matches(flag_colors, lang_colors.items(), dist=lambda c, entry: c.distance_to(entry[1])))
+    flag_lang_exts = [langs[name]['extensions'][0] for name in flag_lang_names]
     print('\n'.join(f'    {color:>9} -> {lang:<16} ({ext})' for color, lang, ext in zip(flag_raw_colors, flag_lang_names, flag_lang_exts)))
 
     if args.output:
